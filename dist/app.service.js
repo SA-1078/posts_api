@@ -12,6 +12,12 @@ let AppService = class AppService {
     getHello() {
         return 'Hello World desde los Poderosos Programadores de Tercer Semestre!';
     }
+    getHealth() {
+        return {
+            service: 'posts-api service',
+            message: 'Online',
+        };
+    }
 };
 exports.AppService = AppService;
 exports.AppService = AppService = __decorate([
