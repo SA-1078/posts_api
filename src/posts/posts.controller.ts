@@ -13,8 +13,11 @@ export class PostsController {
   }
 
   @Get()
-  findAll(@Query() query: QueryDto) {
-    return this.postsService.findAll(query);
+  async findAll(@Query() query: QueryDto) {
+    const result = await this.postsService.findAll(query);
+    return {
+      data: result
+    };
   }
 
   @Get(':id')

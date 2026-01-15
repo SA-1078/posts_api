@@ -25,8 +25,11 @@ let PostsController = class PostsController {
     create(createPostDto) {
         return this.postsService.create(createPostDto);
     }
-    findAll(query) {
-        return this.postsService.findAll(query);
+    async findAll(query) {
+        const result = await this.postsService.findAll(query);
+        return {
+            data: result
+        };
     }
     findOne(id) {
         return this.postsService.findOne(id);
@@ -51,7 +54,7 @@ __decorate([
     __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [query_dto_1.QueryDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], PostsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
