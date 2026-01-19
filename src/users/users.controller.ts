@@ -7,12 +7,12 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { SuccessResponseDto } from 'src/common/dto/response.dto';
+import { SuccessResponseDto } from '../common/dto/response.dto';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { User } from './user.entity';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { QueryDto } from 'src/common/dto/query.dto';
+import { QueryDto } from '../common/dto/query.dto';
 
 @Controller('users')
 export class UsersController {
@@ -54,12 +54,6 @@ export class UsersController {
     return new SuccessResponseDto('User retrieved successfully', user);
   }
 
-  @Put(':id')
-  async update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
-    const user = await this.usersService.update(id, dto);
-    if (!user) throw new NotFoundException('User not found');
-    return new SuccessResponseDto('User updated successfully', user);
-  }
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
@@ -82,12 +76,21 @@ export class UsersController {
     }
   }))
   async uploadProfile(@Param('id') id: string, @UploadedFile() file: Express.Multer.File) {
+    console.log("put upload", file);
     if (!file) throw new BadRequestException('Profile image is required');
     const user = await this.usersService.updateProfile(id, file.filename);
     if (!user) throw new NotFoundException('User not found');
     return new SuccessResponseDto('Profile image updated', user);
   }
+
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
+
+    console.log('put update')
+    const user = await this.usersService.update(id, dto);
+    if (!user) throw new NotFoundException('User not found');
+    return new SuccessResponseDto('User updated successfully', user);
+  }
+
+
 }
-
-
-

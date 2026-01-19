@@ -1,4 +1,3 @@
-
 import { IsNotEmpty, IsString, IsNumber, IsBoolean, IsDateString } from 'class-validator';
 
 export class CreateContenidoDto {

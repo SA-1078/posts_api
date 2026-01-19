@@ -16,15 +16,17 @@ describe('AppService', () => {
         expect(service).toBeDefined();
     });
 
-    it('getHealth() debería retornar el mensaje esperado', () => {
-        expect(service.getHealth()).toEqual({
-            service: 'posts-api service',
-            message: 'Online',
-        });
+    it('getHello() debería retornar el mensaje esperado', () => {
+        expect(service.getHealth()).toEqual(
+            {
+                service: "posts-api service",
+                message: "Online"
+            },
+        );
     });
 
-    it('getHealth() debería retornar un objeto', () => {
+    it('getHello() debería retornar un objeto', () => {
         const result = service.getHealth();
-        expect(typeof result).toEqual('object');
+        expect(typeof result).toBe('object');
     });
 });

@@ -12,7 +12,7 @@ export class CategoriesService {
   constructor(
     @InjectRepository(Category)
     private readonly categoryRepo: Repository<Category>,
-  ) {}
+  ) { }
 
   async create(dto: CreateCategoryDto): Promise<Category | null> {
     try {

@@ -62,7 +62,7 @@ let AuthService = class AuthService {
             const isValid = await bcrypt.compare(loginDto.password, user.password);
             if (!isValid)
                 return null;
-            const payload = { id: user.id, username: user.username };
+            const payload = { id: user.id, username: user.username, role: user.role };
             return this.jwtService.sign(payload);
         }
         catch (err) {
@@ -74,7 +74,7 @@ let AuthService = class AuthService {
         const user = await this.usersService.create(createUserDto);
         if (!user)
             return null;
-        const payload = { id: user.id, email: user.username };
+        const payload = { id: user.id, email: user.username, role: user.role };
         return this.jwtService.sign(payload);
     }
 };

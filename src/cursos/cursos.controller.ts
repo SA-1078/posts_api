@@ -1,4 +1,3 @@
-
 import {
     Controller, Get, Post, Put, Delete, Param, Body, Query, NotFoundException, InternalServerErrorException
 } from '@nestjs/common';
@@ -48,4 +47,3 @@ export class CursosController {
         return new SuccessResponseDto('Course deleted successfully', curso);
     }
 }
-

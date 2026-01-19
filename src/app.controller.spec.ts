@@ -15,8 +15,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe(
+    it('should return Service Online', () => {
+      expect(appController.getHello()).toEqual(
         {
           service: "posts-api service",
           message: "Online"

@@ -1,5 +1,3 @@
-
-
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
@@ -37,4 +35,3 @@ export class Contenido extends Document {
 }
 
 export const ContenidoSchema = SchemaFactory.createForClass(Contenido);
-

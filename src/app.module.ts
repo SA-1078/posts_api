@@ -8,9 +8,9 @@ import { UsersModule } from './users/users.module';
 import { CategoriesModule } from './categories/categories.module';
 import { PostsModule } from './posts/posts.module';
 import { BasicsModule } from './basics/basics.module';
-import { CursosModule } from './cursos/cursos.module';
 import { MailModule } from './mail/mail.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CursosModule } from './cursos/cursos.module';
 
 @Module({
   imports: [
@@ -38,5 +38,4 @@ import { MongooseModule } from '@nestjs/mongoose';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
-  
+export class AppModule { }

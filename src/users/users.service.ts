@@ -40,10 +40,10 @@ export class UsersService {
       const { page, limit, search, searchField, sort, order } = queryDto;
 
       const query = this.userRepository.createQueryBuilder('user');
-
+      /*
       if (isActive !== undefined) {
         query.andWhere('user.isActive = :isActive', { isActive });
-      }
+      }*/
 
       if (search) {
         if (searchField) {
@@ -134,7 +134,7 @@ export class UsersService {
 
   async updateProfile(id: string, filename: string): Promise<User | null> {
     try {
-      const user = await this.userRepository.findOne({ where: { id } });
+      const user = await this.findOne(id);
       if (!user) return null;
 
       user.profile = filename;

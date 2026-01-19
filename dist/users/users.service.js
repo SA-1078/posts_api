@@ -75,9 +75,6 @@ let UsersService = class UsersService {
         try {
             const { page, limit, search, searchField, sort, order } = queryDto;
             const query = this.userRepository.createQueryBuilder('user');
-            if (isActive !== undefined) {
-                query.andWhere('user.isActive = :isActive', { isActive });
-            }
             if (search) {
                 if (searchField) {
                     switch (searchField) {

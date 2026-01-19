@@ -51,4 +51,3 @@ export class Curso extends Document {
 }
 
 export const CursoSchema = SchemaFactory.createForClass(Curso);
-

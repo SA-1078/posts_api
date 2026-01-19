@@ -1,4 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { UserRole } from './user-role.enum';
+import { IsOptional } from 'class-validator';
 
 @Entity('users')
 export class User {
@@ -8,11 +10,18 @@ export class User {
   @Column({ unique: true })
   username: string;
 
-  @Column({ unique: true, nullable: true })
+  @Column({ unique: true })
   email: string;
 
   @Column()
   password: string;
+
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    default: UserRole.USER,
+  })
+  role: UserRole;
 
   @Column({ default: true })
   isActive: boolean;
@@ -20,4 +29,3 @@ export class User {
   @Column({ nullable: true })
   profile: string;
 }
-
